@@ -1,7 +1,9 @@
 #!/bin/bash
 #strict mode
 set -euo pipefail
+set -x
 IFS=$'\n\t'
+
 
 #get the directory of cloned repo
 PROJ_HOME=$(pwd)
@@ -78,4 +80,19 @@ systemctl enable node_exporter.service
 #add user server to group docker
 adduser server docker
 
+#clone git repos
+cd $HOME
 
+#make git dir
+mkdir git
+
+#enter git dir
+cd git
+
+#clone all the repos in repos.txt
+while read $PROJ_HOME/repos.txt; do
+    git clone $read
+done
+
+#return to the project home
+cd $PROJ_HOME
