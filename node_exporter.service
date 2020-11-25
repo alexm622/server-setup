@@ -1,0 +1,16 @@
+[Unit]
+Description=Node Exporter
+[Service]
+#User=ubuntu
+
+WorkingDirectory=/usr/bin/
+
+ExecStart=/usr/bin/node_exporter --web.listen-address="replace_me:9100"
+
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
