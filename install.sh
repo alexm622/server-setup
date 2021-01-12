@@ -7,6 +7,7 @@ IFS=$'\n\t'
 
 #get the directory of cloned repo
 PROJ_HOME=$(pwd)
+MENU1=
 
 #install variable
 IP_FOR_NODE=10.1.4.171
@@ -96,3 +97,13 @@ done
 
 #return to the project home
 cd $PROJ_HOME
+
+while read $PROJ_HOME/packages.txt; do
+    if [[ -z "$read"]]; then
+        echo "there's nothing in the packages.txt"
+    else
+        apt install -y $read
+    fi
+done
+
+
